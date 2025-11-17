@@ -2,36 +2,225 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* Import font Rubik dari Google Fonts */
-
-
-/* Layer base untuk override styling dasar */
+/* ------------------------------
+   BASE SETTINGS
+--------------------------------*/
 @layer base {
   html {
-    /* Ganti font default ke Poppins (pastikan sudah import juga jika mau pake Poppins) */
     font-family: 'Poppins', sans-serif;
     background-color: #ffffff;
+    scroll-behavior: smooth;
   }
-
-  /* Jika mau pake Rubik di kelas khusus, contoh: */
-  /* 
-  .rubik {
-    font-family: 'Rubik', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 900;
-    font-style: normal;
-  }
-  */
 }
 
-/* Hilangkan spin button di input number */
-input[type='number']::-webkit-inner-spin-button {
+/* Hilangkan spin di input number */
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  margin: 0; /* kadang perlu margin 0 juga */
+  margin: 0;
+}
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
 }
 
-input[type='number'] {
-  appearance: textfield;
-  -moz-appearance: textfield; /* untuk Firefox */
+/* ------------------------------
+   GLOBAL MOTION / ANIMATIONS
+--------------------------------*/
+
+/* Float Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+/* Bounce Slow */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-bounce-slow { animation: bounce-slow 5s ease-in-out infinite; }
+
+/* Bounce Slower */
+@keyframes bounce-slower {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.animate-bounce-slower { animation: bounce-slower 7s ease-in-out infinite; }
+
+/* ------------------------------
+   SECTION REVEAL
+--------------------------------*/
+@keyframes sectionReveal {
+  0% { opacity: 0; transform: translateY(60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-section-reveal {
+  animation: sectionReveal 1s ease-out forwards;
+}
+
+/* Fade Utilities */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease-out;
+}
+
+.fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: 0.8s ease-out;
+}
+
+.fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: 0.8s ease-out;
+}
+
+.show {
+  opacity: 1 !important;
+  transform: translate(0) !important;
+}
+
+/* ------------------------------
+   MARQUEE (SKILLS SECTION)
+--------------------------------*/
+
+/* Animasi arah kiri */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Animasi arah kanan */
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Track berisi 2 row duplicate */
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+/* Row berisi 1 set icon */
+.marquee-row {
+  display: flex;
+  gap: 3.5rem;
+}
+
+/* Arah kiri */
+.marquee-left {
+  animation: marquee-left 22s linear infinite;
+}
+
+/* Arah kanan */
+.marquee-right {
+  animation: marquee-right 22s linear infinite;
+}
+
+/* Mencegah icon mengecil atau wrap */
+.marquee-item {
+  flex-shrink: 0;
+}
+
+.download-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.download-btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0)
+  );
+  transform: rotate(25deg);
+  transition: 0.6s;
+}
+
+.download-btn:hover::before {
+  top: -10%;
+  left: -10%;
+}
+
+.shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+  transform: skewX(25deg);
+  transition: 0.7s;
+}
+
+.download-btn:hover .shine {
+  left: 120%;
+}
+
+.nav-link {
+  position: relative;
+  padding: 6px 10px;
+  border-radius: 9999px;
+  overflow: hidden;
+  color: #0f172a; /* text-slate-900 */
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+/* Blob cair di belakang teks */
+.nav-link::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(
+    circle at 0% 0%,
+    rgba(59, 130, 246, 0.55),
+    rgba(129, 140, 248, 0.3),
+    rgba(236, 72, 153, 0.18),
+    transparent 70%
+  );
+  opacity: 0;
+  transform: scale(0.4);
+  filter: blur(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: -1;
+}
+
+/* Hover: blob muncul kayak air geser */
+.nav-link:hover::before {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Active state: blob selalu nyala */
+.nav-link.nav-active::before {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Active text styling */
+.nav-link.nav-active {
+  color: #464a50;
+  font-weight: 600;
 }

@@ -1,4 +1,13 @@
-export default function Home() {
-  return <h1 className="text-3xl text-green-700 font-bold underline">Hello, Tailwind CSS!</h1>;
-}
+import Head from "next/head";
+import MainLayout from "@/layouts/MainLayouts";
 
+export default function Home() {
+  return (
+    <>
+      <Head>
+        <title>Dio Adeliya Putra</title>
+      </Head>
+      <MainLayout />
+    </>
+  );
+}
