@@ -4,6 +4,7 @@ import { useState } from "react";
 import emailjs from "emailjs-com";
 import { MdEmail } from "react-icons/md";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+// import Lanyard from "@/components/Lanyard/Lanyard";
 
 export default function ContactSection() {
   const [loading, setLoading] = useState(false);
@@ -15,10 +16,10 @@ export default function ContactSection() {
 
     emailjs
       .sendForm(
-        "YOUR_SERVICE_ID", // ganti
-        "YOUR_TEMPLATE_ID", // ganti
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
         e.target,
-        "YOUR_PUBLIC_KEY" // ganti
+        "YOUR_PUBLIC_KEY"
       )
       .then(
         () => {
@@ -36,23 +37,19 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-28 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-100 rounded-2xl"
+      className="relative flex items-center justify-center px-4 md:px-10 pt-28 md:pt-32 pb-20"
     >
-      {/* Soft white gradient / glow */}
+      {/* Soft white glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 -left-24 w-[420px] h-[420px] bg-gradient-to-br from-white via-blue-100/60 to-purple-100/60 blur-3xl" />
         <div className="absolute -bottom-40 -right-24 w-[420px] h-[420px] bg-gradient-to-tl from-white via-sky-100/70 to-indigo-100/60 blur-3xl" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 md:px-12 text-center">
-        <h2 className="text-4xl md:text-6xl font-bold text-neutral-900 mb-4">
-          Any questions?
-        </h2>
-        <p className="text-neutral-600 mb-12 max-w-2xl mx-auto">
-          Punya pertanyaan atau mau kerja bareng? Kirim pesan, dan gue bakal
-          respon secepat mungkin.
-        </p>
+      {/* === 3D Lanyard deco === */}
+          {/* <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} /> */}
+       
 
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12 text-center">
         <div className="grid md:grid-cols-2 gap-10">
           {/* FORM KIRI */}
           <form
@@ -68,7 +65,7 @@ export default function ContactSection() {
               name="name"
               placeholder="Your Name"
               required
-              className="w-full mb-4 px-4 py-3 rounded-xl bg-slate-50 text-neutral-900 border border-slate-200 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:bg-white transition"
+              className="w-full mb-4 px-4 py-3 rounded-xl bg-slate-50 text-neutral-900 border border-slate-200"
             />
 
             <input
@@ -76,56 +73,54 @@ export default function ContactSection() {
               name="email"
               placeholder="Your Email"
               required
-              className="w-full mb-4 px-4 py-3 rounded-xl bg-slate-50 text-neutral-900 border border-slate-200 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:bg-white transition"
+              className="w-full mb-4 px-4 py-3 rounded-xl bg-slate-50 text-neutral-900 border border-slate-200"
             />
 
             <textarea
               name="message"
+              rows={5}
               placeholder="Your Message"
               required
-              rows={5}
-              className="w-full mb-6 px-4 py-3 rounded-xl bg-slate-50 text-neutral-900 border border-slate-200 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:bg-white transition"
+              className="w-full mb-6 px-4 py-3 rounded-xl bg-slate-50 text-neutral-900 border border-slate-200"
             />
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-500 shadow-md hover:shadow-lg hover:brightness-105 transition disabled:opacity-60"
+              className="w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-900 to-indigo-950"
             >
               {loading ? "Sending..." : "Send Message"}
             </button>
 
             {sent && (
               <p className="text-emerald-500 mt-4 text-sm">
-                Pesan berhasil dikirim. Thank you! 🙌
+                Pesan berhasil dikirim!
               </p>
             )}
           </form>
 
-          {/* KARTU KANAN – ICON SOSMED */}
+          {/* SOSMED */}
           <div className="p-8 rounded-2xl bg-white/70 backdrop-blur-xl border border-white shadow-[0_18px_60px_rgba(15,23,42,0.06)] text-left">
             <h3 className="text-2xl font-semibold mb-4 text-neutral-900">
               Let’s Connect
             </h3>
+
             <p className="text-neutral-600 mb-6">
-              Selain via form, lu juga bisa reach out lewat email atau sosial
-              media di bawah ini.
+              Selain via form, lu juga bisa reach out lewat sosial media di
+              bawah.
             </p>
 
             <div className="space-y-4">
               {/* Email */}
-              <a
-                href="mailto:dioaputra01@gmail.com"
-                className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-xl hover:bg-white transition border border-slate-200"
-              >
+              <a className="flex items-center gap-3 bg-slate-50 p-4 rounded-xl">
                 <div className="p-2 rounded-full bg-blue-100">
                   <MdEmail className="text-xl text-blue-600" />
                 </div>
-                <div className="flex flex-col">
+                <div>
                   <span className="text-xs text-neutral-500">Email</span>
-                  <span className="text-sm md:text-base text-neutral-800">
+                  <p className="text-neutral-800 text-sm">
                     dioaputra01@gmail.com
-                  </span>
+                  </p>
                 </div>
               </a>
 
@@ -133,17 +128,14 @@ export default function ContactSection() {
               <a
                 href="https://github.com/yoptrv"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-xl hover:bg-white transition border border-slate-200"
+                className="flex items-center gap-3 bg-slate-50 p-4 rounded-xl"
               >
-                <div className="p-2 rounded-full bg-neutral-900/5">
+                <div className="p-2 rounded-full bg-neutral-100">
                   <FaGithub className="text-xl text-neutral-900" />
                 </div>
-                <div className="flex flex-col">
+                <div>
                   <span className="text-xs text-neutral-500">GitHub</span>
-                  <span className="text-sm md:text-base text-neutral-800">
-                    yoptrv
-                  </span>
+                  <p className="text-neutral-800 text-sm">yoptrv</p>
                 </div>
               </a>
 
@@ -151,17 +143,14 @@ export default function ContactSection() {
               <a
                 href="https://instagram.com/dioptrv"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-xl hover:bg-white transition border border-slate-200"
+                className="flex items-center gap-3 bg-slate-50 p-4 rounded-xl"
               >
                 <div className="p-2 rounded-full bg-pink-100">
                   <FaInstagram className="text-xl text-pink-500" />
                 </div>
-                <div className="flex flex-col">
+                <div>
                   <span className="text-xs text-neutral-500">Instagram</span>
-                  <span className="text-sm md:text-base text-neutral-800">
-                    @dioptrv
-                  </span>
+                  <p className="text-neutral-800 text-sm">@dioptrv</p>
                 </div>
               </a>
 
@@ -169,17 +158,14 @@ export default function ContactSection() {
               <a
                 href="https://www.linkedin.com/in/dio-adeliya-putra-457188249"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-xl hover:bg-white transition border border-slate-200"
+                className="flex items-center gap-3 bg-slate-50 p-4 rounded-xl"
               >
                 <div className="p-2 rounded-full bg-sky-100">
                   <FaLinkedin className="text-xl text-sky-600" />
                 </div>
-                <div className="flex flex-col">
+                <div>
                   <span className="text-xs text-neutral-500">LinkedIn</span>
-                  <span className="text-sm md:text-base text-neutral-800">
-                    Dio Adeliya Putra
-                  </span>
+                  <p className="text-neutral-800 text-sm">Dio Adeliya Putra</p>
                 </div>
               </a>
             </div>

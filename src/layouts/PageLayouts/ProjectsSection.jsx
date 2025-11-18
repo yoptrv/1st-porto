@@ -1,13 +1,20 @@
 import ProjectCard from "@/components/ProjectCard";
+import ScrambledText from "@/components/ScrambledText/ScrambledText";
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-20 bg-neutral-50 w-full rounded-2xl">
+    <section id="projects" className=" w-full rounded-2xl">
       <div className="max-w-7xl mx-auto px-8 md:px-20">
-        <p className="fade-up text-neutral-600 text-lg max-w-2xl mx-auto mb-16 text-center">
-          Beberapa project yang gue kerjain — mulai dari UMKM, sistem informasi,
-          sampai aplikasi modern.
-        </p>
+        <ScrambledText
+          className="scrambled-text-demo max-w-3xl mx-auto mb-10 leading-relaxed"
+          radius={80}
+          duration={1.0}
+          speed={0.45}
+          scrambleChars={"!<>-_\."}
+        >
+          Teknologi yang saya gunakan untuk membangun aplikasi modern, cepat,
+          stabil, dan terintegrasi dengan AI.
+        </ScrambledText>
 
         <div className="grid md:grid-cols-2 gap-10 fade-up">
           <ProjectCard

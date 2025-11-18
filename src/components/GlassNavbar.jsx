@@ -51,13 +51,13 @@ export default function GlassNavbar() {
   return (
     <nav
       className={`
-        fixed top-6 left-1/2 -translate-x-1/2 
-        z-50 backdrop-blur-xl bg-white/10 
-        border border-white/20 shadow-lg
-        px-6 py-3 rounded-full flex gap-6
-        transition-all duration-300
-        ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"}
-      `}
+      fixed top-6 left-1/2 -translate-x-1/2 
+      z-50 backdrop-blur-xl bg-white/10 
+      border border-white/20 shadow-lg
+      px-6 py-3 rounded-full flex gap-4 md:gap-6
+      transition-all duration-300
+      ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"}
+    `}
     >
       {["home", "skills", "projects", "contact"].map((item) => (
         <a
