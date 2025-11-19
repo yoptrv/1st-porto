@@ -193,13 +193,7 @@ input[type="number"] {
   content: "";
   position: absolute;
   inset: -20%;
-  background: radial-gradient(
-    circle at 0% 0%,
-    rgba(1, 27, 66, 0.993),
-    rgb(12, 26, 107),
-    rgba(31, 17, 92, 0.979),
-    transparent 70%
-  );
+  background: rgba(209, 209, 209, 0.95); /* ⬅️ BUKAN gradient lagi */
   opacity: 0;
   transform: scale(0.4);
   filter: blur(10px);

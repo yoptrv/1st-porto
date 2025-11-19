@@ -50,7 +50,7 @@ export default function SkillsSection() {
           speed={0.45}
           scrambleChars={"!<>-_\\/[]{}—=+*^?#________"}
         >
-          Teknologi yang saya gunakan untuk membangun  aplikasi modern, cepat,
+          Teknologi yang saya gunakan untuk membangun- aplikasi modern, cepat,
           stabil, dan terintegrasi dengan AI.
         </ScrambledText>
 

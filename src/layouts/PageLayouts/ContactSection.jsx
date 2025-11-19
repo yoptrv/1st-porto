@@ -5,6 +5,7 @@ import emailjs from "emailjs-com";
 import { MdEmail } from "react-icons/md";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 // import Lanyard from "@/components/Lanyard/Lanyard";
+import GradientText from "@/components/GradientText/GradientText";
 
 export default function ContactSection() {
   const [loading, setLoading] = useState(false);
@@ -37,7 +38,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative flex items-center justify-center px-4 md:px-10 pt-28 md:pt-32 pb-20"
+      className="relative flex items-center justify-center px-4 md:px-5  md:pt-10 pb-20"
     >
       {/* Soft white glow */}
       <div className="pointer-events-none absolute inset-0">
@@ -46,8 +47,7 @@ export default function ContactSection() {
       </div>
 
       {/* === 3D Lanyard deco === */}
-          {/* <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} /> */}
-       
+      {/* <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} /> */}
 
       <div className="relative max-w-6xl mx-auto px-6 md:px-12 text-center">
         <div className="grid md:grid-cols-2 gap-10">
@@ -57,7 +57,20 @@ export default function ContactSection() {
             className="p-8 rounded-2xl bg-white/80 backdrop-blur-xl border border-white shadow-[0_18px_60px_rgba(15,23,42,0.08)] text-left"
           >
             <h3 className="text-2xl font-semibold text-neutral-900 mb-6">
-              Get in Touch
+              <GradientText
+                colors={[
+                  "#e7e3e3ff",
+                  "#002374ff",
+                  "#ffffffff",
+                  "#05076eff",
+                  "#5b759cff",
+                ]}
+                animationSpeed={9}
+                showBorder={false}
+                className="custom-class"
+              >
+                Get in Touch!
+              </GradientText>
             </h3>
 
             <input
@@ -102,13 +115,21 @@ export default function ContactSection() {
           {/* SOSMED */}
           <div className="p-8 rounded-2xl bg-white/70 backdrop-blur-xl border border-white shadow-[0_18px_60px_rgba(15,23,42,0.06)] text-left">
             <h3 className="text-2xl font-semibold mb-4 text-neutral-900">
-              Let’s Connect
+              <GradientText
+                colors={[
+                  "#e0e0e0ff",
+                  "#002374ff",
+                  "#ffffffff",
+                  "#05076eff",
+                  "#5b759cff",
+                ]}
+                animationSpeed={9}
+                showBorder={false}
+                className="custom-class"
+              >
+                Let's Connect!
+              </GradientText>
             </h3>
-
-            <p className="text-neutral-600 mb-6">
-              Selain via form, lu juga bisa reach out lewat sosial media di
-              bawah.
-            </p>
 
             <div className="space-y-4">
               {/* Email */}
