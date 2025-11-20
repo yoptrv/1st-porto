@@ -4,17 +4,22 @@ import SkillsSection from "./PageLayouts/SkillsSection";
 import ProjectsSection from "./PageLayouts/ProjectsSection";
 import ContactSection from "./PageLayouts/ContactSection";
 import useScrollAnimation from "@/hooks/useScrollAnimation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import TextPressure from "@/components/TextPressure/TextPressure";
-import Dither from "@/background/Dither/Dither";
-
-import LogoLoop from "@/components/LogoLoop/LogoLoop";
+// import Dither from "@/background/Dither/Dither";
+import AboutMe from "./PageLayouts/AboutMe";
+import { FaReact, FaNodeJs, FaPython } from "react-icons/fa";
 import {
-  SiReact,
   SiNextdotjs,
-  SiTypescript,
   SiTailwindcss,
+  SiTypescript,
+  SiJavascript,
+  SiFirebase,
+  SiTensorflow,
+  SiPostgresql,
 } from "react-icons/si";
+import LogoLoop from "@/components/LogoLoop/LogoLoop";
+import LightRays from "@/background/LightRays/LightRays";
 
 export default function MainLayout() {
   useScrollAnimation();
@@ -32,33 +37,34 @@ export default function MainLayout() {
 
   // === LOGO LOOP DATA ===
   const techLogos = [
-    { node: <SiReact />, title: "React", href: "https://react.dev" },
-    { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
-    {
-      node: <SiTypescript />,
-      title: "TypeScript",
-      href: "https://www.typescriptlang.org",
-    },
-    {
-      node: <SiTailwindcss />,
-      title: "Tailwind CSS",
-      href: "https://tailwindcss.com",
-    },
+    { node: <FaReact size={80} color="#61DAFB" /> },
+    // { node: <SiNextdotjs size={80} color="#ffffff" /> },
+    { node: <SiTailwindcss size={80} color="#38BDF8" /> },
+    { node: <SiTypescript size={80} color="#3178C6" /> },
+    { node: <SiJavascript size={80} color="#F7DF1E" /> },
+    { node: <FaNodeJs size={80} color="#3C873A" /> },
+    { node: <SiFirebase size={80} color="#F5820D" /> },
+    { node: <FaPython size={80} color="#3776AB" /> },
+    { node: <SiTensorflow size={80} color="#FF6F00" /> },
+    { node: <SiPostgresql size={80} color="#336791" /> },
   ];
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden">
       {/* DITHER BACKGROUND */}
-      <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none">
-        <Dither
-          waveColor={[0.5, 0.5, 0.5]}
-          disableAnimation={false}
-          enableMouseInteraction={true}
-          mouseRadius={0.3}
-          colorNum={4}
-          waveAmplitude={0.3}
-          waveFrequency={3}
-          waveSpeed={0.05}
+
+      <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none bg-black">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#f1f1f1ff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.02}
+          className="custom-rays"
         />
       </div>
 
@@ -67,15 +73,18 @@ export default function MainLayout() {
       <div className="pointer-events-none fixed bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-purple-500/20 blur-[220px] rounded-full z-0" />
 
       <GlassNavbar />
-
       <div className="relative z-10 space-y-12">
         {/* HERO */}
-        <SectionWrapper id="home">
+        <SectionWrapper id="profile">
           <HeroSection />
         </SectionWrapper>
 
+        <SectionWrapper id="about">
+          <AboutMe />
+        </SectionWrapper>
+
         {/* SKILLS */}
-        <SectionWrapper id="skills" title="Skills">
+        <SectionWrapper id="skills" title="education">
           <SkillsSection />
 
           {/* =====================
@@ -86,7 +95,7 @@ export default function MainLayout() {
               logos={techLogos}
               speed={120}
               direction="left"
-              logoHeight={48}
+              logoHeight={90}
               gap={40}
               hoverSpeed={0}
               scaleOnHover
@@ -113,18 +122,34 @@ export default function MainLayout() {
 
 function SectionWrapper({ id, title, children }) {
   const isContact = id === "contact";
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () =>
+      setIsMobile(typeof window !== "undefined" && window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section
       id={id}
       className={`
-        opacity-0 animate-section-reveal translate-y-10 w-full py-4
+        ${!isContact ? "opacity-0 animate-section-reveal translate-y-10" : ""}
+        w-full pt-0 pb-4 md:pt-4 md:pb-8
         ${isContact ? "bg-white text-slate-900" : ""}
       `}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {title && (
-          <div className="relative w-full min-h-[120px] mb-6 fade-up overflow-visible">
+          <div
+            className={`
+              relative w-full mb-6 overflow-visible
+              ${!isContact ? "fade-up" : ""}
+              ${isMobile ? "min-h-[60px]" : "min-h-[140px]"}
+            `}
+          >
             <TextPressure
               text={title}
               flex={false}
@@ -133,14 +158,16 @@ function SectionWrapper({ id, title, children }) {
               italic={false}
               alpha={false}
               stroke={false}
-              scale={true}
-              minFontSize={70}
+              scale={!isMobile}
+              minFontSize={isMobile ? 22 : 120}
               textColor={isContact ? "#0f172a" : "#cacacaff"}
             />
           </div>
         )}
 
-        <div className="fade-up">{children}</div>
+        <div className={`${!isContact ? "fade-up" : ""} overflow-visible`}>
+          {children}
+        </div>
       </div>
     </section>
   );

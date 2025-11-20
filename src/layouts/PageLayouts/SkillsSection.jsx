@@ -1,84 +1,111 @@
-import SpotlightCard from "@/components/SpotlightCard/SpotlightCard";
-import ScrambledText from "@/components/ScrambledText/ScrambledText";
+"use client";
 
-const skills = [
-  {
-    name: "JavaScript",
-    icon: "/icons/js.png",
-    desc: "Bahasa utama untuk membuat fitur interaktif.",
-    spotlightColor: "rgba(247, 223, 30, 0.25)",
-  },
-  {
-    name: "Next.js",
-    icon: "/icons/next.png",
-    desc: "Framework React modern untuk web cepat & scalable.",
-    spotlightColor: "rgba(255, 255, 255, 0.18)",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: "/icons/tailwind.png",
-    desc: "Utility-first CSS untuk styling super cepat.",
-    spotlightColor: "rgba(56, 189, 248, 0.25)",
-  },
-  {
-    name: "Python",
-    icon: "/icons/python.png",
-    desc: "Bahasa serbaguna untuk scripting & AI.",
-    spotlightColor: "rgba(11, 109, 255, 0.49)",
-  },
-  {
-    name: "MySQL",
-    icon: "/icons/mysql.png",
-    desc: "Database SQL untuk data terstruktur.",
-    spotlightColor: "rgba(37, 99, 235, 0.25)",
-  },
-  {
-    name: "Java",
-    icon: "/icons/java.png",
-    desc: "Bahasa OOP untuk backend & materi kampus.",
-    spotlightColor: "rgba(220, 38, 38, 0.25)",
-  },
-];
-export default function SkillsSection() {
+import { useState, useEffect } from "react";
+import ChromaGrid from "@/components/ChromaGrid/ChromaGrid";
+
+export default function EducationSection() {
+  // DETECT MOBILE
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const items = [
+    {
+      image: "/sertif/1.jpg", // tetap jadi preview
+      title: "Frontend Developer Certificate",
+      subtitle: "Unity Hub — 2024",
+      handle: "Klik untuk download",
+      borderColor: "#3B82F6",
+      gradient: "linear-gradient(145deg, #3B82F6, #000)",
+      url: "/sertif/1.jpg", 
+    },
+    {
+      image: "/sertif/2.png",
+      title: "Strategi Keuangan dan Legalitas untuk Bisnis Berkelanjutan",
+      subtitle: "P2MW — 2025",
+      handle: "Klik untuk download",
+      borderColor: "#10B981",
+      gradient: "linear-gradient(180deg, #10B981, #000)",
+      url: "/sertif/2.pdf",
+    },
+    {
+      image: "/sertif/3.png",
+      title: "Fundamentals of Web Programming",
+      subtitle: "Lepkom Gunadarma — 2023",
+      handle: "Klik untuk download",
+      borderColor: "#ae00ffff",
+      gradient: "linear-gradient(180deg, #6710b9ff, #050505ff)",
+      url: "/sertif/3.pdf",
+    },
+    {
+      image: "/sertif/4.png",
+      title: "Fundamentals of DBMS",
+      subtitle: "Lepkom Gunadarma — 2023",
+      handle: "Klik untuk download",
+      borderColor: "#ae00ffff",
+      gradient: "linear-gradient(180deg, #6710b9ff, #000)",
+      url: "/sertif/4.pdf",
+    },
+  ];
+
+  // AUTO DOWNLOAD
+ const handleDownload = (url) => {
+   if (!url) return; 
+   const a = document.createElement("a");
+   a.href = url;
+   a.download = url.split("/").pop();
+   a.click();
+ };
+ 
+
   return (
-    <section id="skills" className=" w-full  rounded-2xl">
-      <div className="max-w-7xl px-4 md:px-10 text-center">
-        <ScrambledText
-          className="scrambled-text-demo max-w-3xl mx-auto mb-10 leading-relaxed"
-          radius={80}
-          duration={1.0}
-          speed={0.45}
-          scrambleChars={"!<>-_\\/[]{}—=+*^?#________"}
-        >
-          Teknologi yang saya gunakan untuk membangun- aplikasi modern, cepat,
-          stabil, dan terintegrasi dengan AI.
-        </ScrambledText>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {skills.map((skill) => (
-            <SpotlightCard
-              key={skill.name}
-              spotlightColor={skill.spotlightColor}
-              className="
-    p-6 flex flex-col items-center gap-4
-    bg-gradient-to-br from-slate-900 via-slate-950 to-black
-    border border-cyan-400/20
-  "
-            >
-              <img
-                src={skill.icon}
-                className="w-14 h-14 opacity-90"
-                alt={skill.name}
-              />
-
-              <h3 className="text-lg font-semibold text-white">{skill.name}</h3>
-
-              <p className="text-sm text-neutral-400 max-w-[200px]">
-                {skill.desc}
-              </p>
-            </SpotlightCard>
-          ))}
-        </div>
+    <section id="skills" className="w-full pt-1 md:pt-20 pb-1 md:pb-1">
+      <div className="max-w-7xl mx-auto px-4 md:px-10">
+        {/* === MOBILE MODE === */}
+        {isMobile ? (
+          <div className="grid grid-cols-1 gap-6">
+            {items.map((item, i) => (
+              <div
+                key={i}
+                onClick={() => handleDownload(item.url)}
+                className="bg-white/10 border border-white/10 rounded-2xl p-4 z
+                           backdrop-blur-xl active:scale-[0.97] transition cursor-pointer"
+              >
+                <img
+                  src={item.image}
+                  className="w-full rounded-xl mb-3"
+                  alt={item.title}
+                />
+                <h3 className="text-lg font-semibold text-white">
+                  {item.title}
+                </h3>
+                <p className="text-neutral-300 text-sm">{item.subtitle}</p>
+                <span className="text-sm text-cyan-300">{item.handle}</span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          /* === DESKTOP MODE === */
+          <div className="relative py-1">
+            <ChromaGrid
+              items={items.map((item) => ({
+                ...item,
+                onClick: () => handleDownload(item.url),
+              }))}
+              radius={300}
+              damping={0.45}
+              fadeOut={0.1}
+              ease="power3.out"
+            />
+          </div>
+        )}
       </div>
     </section>
   );

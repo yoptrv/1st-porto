@@ -950,76 +950,103 @@ export default function InfiniteMenu({ items = [] }) {
     }
   };
 
-  return (
-    <div className="relative w-full h-full">
-      <canvas
-        id="infinite-grid-menu-canvas"
-        ref={canvasRef}
-        className="cursor-grab w-full h-full overflow-hidden relative outline-none active:cursor-grabbing bg-transparent"
-      />
+ return (
+   <div className="relative w-full h-full">
+     <canvas
+       id="infinite-grid-menu-canvas"
+       ref={canvasRef}
+       className="cursor-grab w-full h-full overflow-hidden relative outline-none active:cursor-grabbing"
+     />
 
-      {activeItem && (
-        <>
-          {/* DESCRIPTION – KIRI, NGE-WRAP KE BAWAH */}
-          <p
-            className={`
-    select-none
-    absolute
-    text-white/80
-    text-[1.2rem]
-    w-[18ch]          /* 🔥 biar rapih dan turun ke bawah */
-    right-[8%]
-    top-1/2
-    -translate-y-1/2
-    leading-snug
-    transition-all
-    ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-    ${
-      isMoving
-        ? "opacity-0 pointer-events-none duration-[100ms] translate-x-[-60%]"
-        : "opacity-100 pointer-events-auto duration-[500ms] translate-x-[-10%]"
-    }
-  `}
-          >
-            {activeItem.description}
-          </p>
+     {activeItem && (
+       <>
+         {/* ============================
+            📱 MOBILE LAYOUT (HP)
+        ============================ */}
+         <div
+           className="
+            md:hidden
+            absolute 
+            top-[15%] left-1/2 -translate-x-1/2
+            text-center
+            w-[80%]
+            z-20
+          "
+         >
+           <h2 className="text-white font-black text-3xl leading-tight mb-2">
+             {activeItem.title}
+           </h2>
 
-          {/* TITLE – KANAN */}
-          <h2
-            className={`
-    select-none
-    absolute
-    font-black
-    text-white
-    text-4xl
-    w-[10ch]         /* 🔥 batasi lebarnya biar turun ke bawah */
-    left-[8%]        /* 🔥 posisi kiri elegan */
-    top-1/2
-    -translate-y-1/2
-    leading-tight
-    transition-all
-    ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-    ${
-      isMoving
-        ? "opacity-0 pointer-events-none duration-[100ms]"
-        : "opacity-100 pointer-events-auto duration-[500ms]"
-    }
-  `}
-          >
-            {activeItem.title}
-          </h2>
+           <p className="text-white/80 text-base leading-snug">
+             {activeItem.description}
+           </p>
+         </div>
 
-          {/* BUTTON TENGAH BAWAH – TETEP SAMA */}
-          <div
-            onClick={handleButtonClick}
-            className={`
+         {/* ============================
+            🖥️ DESKTOP LAYOUT
+        ============================ */}
+
+         {/* DESCRIPTION – RIGHT SIDE */}
+         <p
+           className={`
+            hidden md:block
+            select-none
+            absolute
+            text-white/80
+            text-[1.2rem]
+            w-[18ch]
+            right-[8%]
+            top-1/2
+            -translate-y-1/2
+            leading-snug
+            transition-all
+            ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+            ${
+              isMoving
+                ? "opacity-0 pointer-events-none duration-[100ms] translate-x-[-60%]"
+                : "opacity-100 pointer-events-auto duration-[500ms] translate-x-[-10%]"
+            }
+          `}
+         >
+           {activeItem.description}
+         </p>
+
+         {/* TITLE – LEFT SIDE */}
+         <h2
+           className={`
+            hidden md:block
+            select-none
+            absolute
+            font-black
+            text-white
+            text-4xl
+            w-[10ch]
+            left-[8%]
+            top-1/2
+            -translate-y-1/2
+            leading-tight
+            transition-all
+            ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+            ${
+              isMoving
+                ? "opacity-0 pointer-events-none duration-[100ms]"
+                : "opacity-100 pointer-events-auto duration-[500ms]"
+            }
+          `}
+         >
+           {activeItem.title}
+         </h2>
+
+         {/* BUTTON */}
+         <div
+           onClick={handleButtonClick}
+           className={`
             absolute
             left-1/2
-            z-10
+            z-20
             w-[60px]
             h-[60px]
-            grid
-            place-items-center
+            grid place-items-center
             bg-[#00ffff]
             border-[5px]
             border-black
@@ -1033,14 +1060,15 @@ export default function InfiniteMenu({ items = [] }) {
                 : "bottom-[3.8em] opacity-100 pointer-events-auto duration-[500ms] scale-100 -translate-x-1/2"
             }
           `}
-          >
-            <p className="select-none relative text-[#060010] top-[2px] text-[26px]">
-              &#x2197;
-            </p>
-          </div>
-        </>
-      )}
-    </div>
-  );
+         >
+           <p className="select-none relative text-[#060010] top-[2px] text-[26px]">
+             &#x2197;
+           </p>
+         </div>
+       </>
+     )}
+   </div>
+ );
+
 
 }

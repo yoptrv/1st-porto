@@ -22,7 +22,8 @@ const TextPressure = ({
   strokeWidth = 2,
   className = '',
 
-  minFontSize = 24
+  minFontSize = 120,
+  // sizeMultiplier = 1,    
 }) => {
   const containerRef = useRef(null);
   const titleRef = useRef(null);
@@ -76,10 +77,10 @@ const TextPressure = ({
 
     const { width: containerW, height: containerH } = containerRef.current.getBoundingClientRect();
 
-    let newFontSize = containerW / (chars.length / 2);
+      let newFontSize = containerW / (chars.length / 2);
     newFontSize = Math.max(newFontSize, minFontSize);
 
-    setFontSize(newFontSize);
+    setFontSize(newFontSize); 
     setScaleY(1);
     setLineHeight(1);
 
@@ -148,7 +149,7 @@ const TextPressure = ({
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full overflow-hidden bg-transparent"
+      className="relative w-full h-auto overflow-visible bg-transparent"
     >
       <style>{`
         @font-face {
@@ -182,7 +183,7 @@ const TextPressure = ({
           fontSize: fontSize,
           lineHeight,
           transform: `scale(1, ${scaleY})`,
-          transformOrigin: "center top",
+          transformOrigin: "center bottom",
           margin: 0,
           fontWeight: 100,
           color: stroke ? undefined : textColor,

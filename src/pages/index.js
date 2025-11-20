@@ -1,7 +1,7 @@
 import Head from "next/head";
 import MainLayout from "@/layouts/MainLayouts";
 
-export default function Home() {
+export default function profile() {
   return (
     <>
       <Head>

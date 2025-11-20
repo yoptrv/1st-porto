@@ -4,7 +4,7 @@ import { useState } from "react";
 import emailjs from "emailjs-com";
 import { MdEmail } from "react-icons/md";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-// import Lanyard from "@/components/Lanyard/Lanyard";
+import Lanyard from "@/components/Lanyard/Lanyard";
 import GradientText from "@/components/GradientText/GradientText";
 
 export default function ContactSection() {
@@ -38,18 +38,33 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative flex items-center justify-center px-4 md:px-5  md:pt-10 pb-20"
+      className="relative overflow-visible flex items-center justify-center px-4 md:px-5 md:pt-10 pb-20"
     >
+      <div
+        className="
+    absolute
+    right-[-900px]   
+    md:right-[-410px]
+    top-[-123px]
+    md:top-[-180px]
+    z-[30]
+    pointer-events-none
+    overflow-visible
+
+    w-[280px]        /* mobile */
+    md:w-[340px]     /* tablet / small desktop */
+    lg:w-[950px]     /* big desktop */
+  "
+      >
+        <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+      </div>
       {/* Soft white glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 -left-24 w-[420px] h-[420px] bg-gradient-to-br from-white via-blue-100/60 to-purple-100/60 blur-3xl" />
         <div className="absolute -bottom-40 -right-24 w-[420px] h-[420px] bg-gradient-to-tl from-white via-sky-100/70 to-indigo-100/60 blur-3xl" />
       </div>
 
-      {/* === 3D Lanyard deco === */}
-      {/* <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} /> */}
-
-      <div className="relative max-w-6xl mx-auto px-6 md:px-12 text-center">
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12 text-center z-[10]">
         <div className="grid md:grid-cols-2 gap-10">
           {/* FORM KIRI */}
           <form

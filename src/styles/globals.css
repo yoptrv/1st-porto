@@ -215,6 +215,6 @@ input[type="number"] {
 
 /* Active text styling */
 .nav-link.nav-active {
-  color: #ffffff;
+  color: #720000;
   font-weight: 600;
 }

@@ -4,9 +4,21 @@ import useScrollNavbar from "@/hooks/useScrollNavbar";
 
 export default function GlassNavbar() {
   const visible = useScrollNavbar();
-  const [active, setActive] = useState("home");
+  const [active, setActive] = useState("profile");
   const [expanded, setExpanded] = useState(false);
   const isContactActive = active === "contact";
+  const projectLinks = [
+    "https://toko-dahlan.vercel.app/",
+    "https://google.com/",
+    "https://plan-out.vercel.app/",
+    "https://panitia-rt-10.vercel.app/",
+  ];
+
+  const handleRandomProject = () => {
+    const random = Math.floor(Math.random() * projectLinks.length);
+    window.location.href = projectLinks[random];
+  };
+
 
   const scrollToSection = (id) => (e) => {
     e.preventDefault();
@@ -22,9 +34,9 @@ export default function GlassNavbar() {
 
   // detect active section
   useEffect(() => {
-    const sections = ["home", "skills", "projects", "contact"];
+    const sections = ["profile", "skills", "projects", "contact"];
     const detect = () => {
-      let current = "home";
+      let current = "profile";
       sections.forEach((s) => {
         const sec = document.getElementById(s);
         if (sec && window.scrollY >= sec.offsetTop - 200) current = s;
@@ -42,7 +54,7 @@ export default function GlassNavbar() {
 
   const renderActions = () => {
     switch (active) {
-      case "home":
+      case "profile":
         return (
           <button
             onClick={() => window.open("/cv.pdf", "_blank")}
@@ -58,7 +70,7 @@ export default function GlassNavbar() {
       case "projects":
         return (
           <button
-            onClick={() => (window.location.href = "#projects")}
+            onClick={handleRandomProject}
             className="px-4 py-1.5 text-xs rounded-full bg-white/20 hover:bg-white/30"
           >
             View More Projects
@@ -146,7 +158,7 @@ export default function GlassNavbar() {
     >
       {/* NAV BUTTONS */}
       <div className="flex justify-center gap-4 mb-1">
-        {["home", "skills", "projects", "contact"].map((item) => {
+        {["profile", "skills", "projects", "contact"].map((item) => {
           const label = item.charAt(0).toUpperCase() + item.slice(1);
           const isActiveItem = active === item;
 

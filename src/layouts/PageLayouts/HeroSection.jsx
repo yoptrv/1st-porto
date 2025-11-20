@@ -7,12 +7,12 @@ import Shuffle from "@/components/Shuffle/Shuffle";
 export default function HeroSection() {
   return (
     <section
-      id="home"
+      id="profile"
       className="
-        relative w-full
-        px-4 md:px-10
-        pt-28 md:pt-32 pb-20
-      "
+    relative w-full
+    px-4 md:px-10
+    pt-20 md:pt-32 pb-1 md:pb-20
+  "
     >
       {/* WRAPPER GLASS */}
       <div
@@ -36,7 +36,7 @@ export default function HeroSection() {
             containerHeight="280px"
             containerWidth="1 80px"
             imageHeight="280px"
-            imageWidth= "200px"
+            imageWidth="200px"
             rotateAmplitude={12}
             scaleOnHover={1.12}
             showMobileWarning={false}
@@ -49,7 +49,7 @@ export default function HeroSection() {
           <div className="absolute -top-20 -left-10 w-80 h-80 bg-blue-500/20 blur-[120px] rounded-full" />
 
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold text-white">Im a</h1>
+            <h1 className="text-2xl font-bold text-white/60">Im a</h1>
             <RotatingText
               texts={[
                 "Software Engineer",
@@ -58,7 +58,7 @@ export default function HeroSection() {
                 "Data Scientist",
               ]}
               mainClassName="
-          px-3 py-1 rounded-lg font-bold text-white
+          px-1 py-1 rounded-lg font-bold text-white/80
           bg-indigo-950/90 border border-white/10 backdrop-blur
         "
               staggerFrom="last"
@@ -74,9 +74,21 @@ export default function HeroSection() {
 
           <div className="w-24 h-[3px] bg-indigo-500/60 rounded-full my-3" />
 
-          <h1 className="text-white font-extrabold leading-tight text-5xl md:text-7xl md:-ml-4">
+          <h1
+            className="
+  text-black/80 font-extrabold leading-tight
+  text-3xl sm:text-4xl md:text-6xl lg:text-7xl
+  md:-ml-4
+"
+          >
             <Shuffle
               text="DIO ADELIYA PUTRA"
+              className="
+    text-3xl 
+    sm:text-4xl 
+    md:text-6xl 
+    lg:text-7xl 
+  "
               shuffleDirection="right"
               duration={0.35}
               animationMode="evenodd"
@@ -91,7 +103,7 @@ export default function HeroSection() {
             />
           </h1>
 
-          <div className="mt-10 flex justify-start">
+          <div className="mt-10 flex justify-center md:justify-start w-full">
             <a
               href="/cv.pdf"
               download="Dio-Adeliya-Putra-CV.pdf"

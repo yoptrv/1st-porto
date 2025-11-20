@@ -1,6 +1,4 @@
 "use client";
-
-import ScrambledText from "@/components/ScrambledText/ScrambledText";
 import InfiniteMenu from "@/components/InfiniteMenu/InfiniteMenu";
 
 export default function ProjectsSection() {
@@ -12,7 +10,7 @@ export default function ProjectsSection() {
       description: "E-commerce UMKM: Next.js + Tailwind + Firebase + Midtrans.",
     },
     {
-      image: "/yp.png",
+      image: "/cs.png",
       link: "https://google.com/",
       title: "Bank Sampah Kalisari",
       description: "Sistem informasi bank sampah: setoran, warga, laporan.",
@@ -32,7 +30,7 @@ export default function ProjectsSection() {
   ];
 
   return (
-    <section id="projects" className="w-full py-20">
+    <section id="projects" className="w-full py-2 md:py-20">
       {/* FULLSCREEN WRAPPER */}
       <div className="relative w-full h-[650px] text-white bg-transparentmd:h-[800px]">
         <InfiniteMenu items={items} />
