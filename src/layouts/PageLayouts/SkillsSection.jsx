@@ -19,12 +19,12 @@ export default function EducationSection() {
   const items = [
     {
       image: "/sertif/1.jpg", // tetap jadi preview
-      title: "Frontend Developer Certificate",
+      title: "Building Conections and Strategic Thinking for Future Leaders",
       subtitle: "Unity Hub — 2024",
       handle: "Klik untuk download",
       borderColor: "#3B82F6",
       gradient: "linear-gradient(145deg, #3B82F6, #000)",
-      url: "/sertif/1.jpg", 
+      url: "/sertif/1.jpg",
     },
     {
       image: "/sertif/2.png",
@@ -53,21 +53,34 @@ export default function EducationSection() {
       gradient: "linear-gradient(180deg, #6710b9ff, #000)",
       url: "/sertif/4.pdf",
     },
+    {
+      image: "/sertif/vins.jpg",
+      title: "Internship as a Mobile Developer",
+      subtitle: "Victoria Insurance — 2024",
+      handle: "Klik untuk download",
+      borderColor: "#ff0000ff",
+      gradient: "linear-gradient(180deg, #b91010ff, #000)",
+      url: "/sertif/4.pdf",
+    },
   ];
 
   // AUTO DOWNLOAD
- const handleDownload = (url) => {
-   if (!url) return; 
-   const a = document.createElement("a");
-   a.href = url;
-   a.download = url.split("/").pop();
-   a.click();
- };
- 
+  const handleDownload = (url) => {
+    if (!url) return;
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = url.split("/").pop();
+    a.click();
+  };
 
   return (
     <section id="skills" className="w-full pt-1 md:pt-20 pb-1 md:pb-1">
       <div className="max-w-7xl mx-auto px-4 md:px-10">
+        <div className="mb-8">
+          <p className="text-sm md:text-base text-gray-400 mx-auto text-center tracking-widest">
+            EXPERIENCE AND SKILL
+          </p>
+        </div>
         {/* === MOBILE MODE === */}
         {isMobile ? (
           <div className="grid grid-cols-1 gap-6">

@@ -17,10 +17,10 @@ export default function ContactSection() {
 
     emailjs
       .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        "service_7l1zfmn",
+        "template_zwkypy8",
         e.target,
-        "YOUR_PUBLIC_KEY"
+        "ChHdkA5pwdsMI3bVl"
       )
       .then(
         () => {

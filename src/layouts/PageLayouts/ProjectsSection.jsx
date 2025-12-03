@@ -11,8 +11,8 @@ export default function ProjectsSection() {
     },
     {
       image: "/cs.png",
-      link: "https://google.com/",
-      title: "Bank Sampah Kalisari",
+      link: "https://google.com",
+      title: "Bank Sampah Pekayon",
       description: "Sistem informasi bank sampah: setoran, warga, laporan.",
     },
     {
