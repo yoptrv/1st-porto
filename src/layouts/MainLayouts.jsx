@@ -17,6 +17,8 @@ import {
   SiFirebase,
   SiTensorflow,
   SiPostgresql,
+  SiFigma,
+  SiCanva,
 } from "react-icons/si";
 import LogoLoop from "@/components/LogoLoop/LogoLoop";
 import LightRays from "@/background/LightRays/LightRays";
@@ -38,15 +40,17 @@ export default function MainLayout() {
   // === LOGO LOOP DATA ===
   const techLogos = [
     { node: <FaReact size={80} color="#61DAFB" /> },
-    // { node: <SiNextdotjs size={80} color="#ffffff" /> },
+    { node: <SiNextdotjs size={80} color="#919191ff" /> },
     { node: <SiTailwindcss size={80} color="#38BDF8" /> },
-    { node: <SiTypescript size={80} color="#3178C6" /> },
+    // { node: <SiTypescript size={80} color="#3178C6" /> },
     { node: <SiJavascript size={80} color="#F7DF1E" /> },
     { node: <FaNodeJs size={80} color="#3C873A" /> },
     { node: <SiFirebase size={80} color="#F5820D" /> },
     { node: <FaPython size={80} color="#3776AB" /> },
     { node: <SiTensorflow size={80} color="#FF6F00" /> },
     { node: <SiPostgresql size={80} color="#336791" /> },
+    { node: <SiFigma size={80} color="#cf750eff" /> },
+    { node: <SiCanva size={80} color="#0eb9cfff" /> },
   ];
 
   return (
