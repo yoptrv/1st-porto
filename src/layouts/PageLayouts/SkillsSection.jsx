@@ -60,7 +60,7 @@ export default function EducationSection() {
       handle: "Klik untuk download",
       borderColor: "#ff0000ff",
       gradient: "linear-gradient(180deg, #b91010ff, #000)",
-      url: "/sertif/4.pdf",
+      url: "/sertif/pdf_vins.pdf",
     },
   ];
 
