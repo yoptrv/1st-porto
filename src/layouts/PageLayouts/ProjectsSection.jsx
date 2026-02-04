@@ -10,8 +10,8 @@ export default function ProjectsSection() {
       description: "E-commerce UMKM: Next.js + Tailwind + Firebase + Midtrans.",
     },
     {
-      image: "/cs.png",
-      link: "https://google.com",
+      image: "/banksampah.png",
+      link: "https://urai-pi.vercel.app/",
       title: "Bank Sampah Pekayon",
       description: "Sistem informasi bank sampah: setoran, warga, laporan.",
     },

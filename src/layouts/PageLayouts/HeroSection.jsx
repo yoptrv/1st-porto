@@ -105,7 +105,7 @@ export default function HeroSection() {
 
           <div className="mt-10 flex justify-center md:justify-start w-full">
             <a
-              href="/cv.pdf"
+              href="/CV.pdf"
               download="Dio-Adeliya-Putra-CV.pdf"
               className="
           download-btn flex items-center gap-3

@@ -155,7 +155,7 @@ export default function ContactSection() {
                 <div>
                   <span className="text-xs text-neutral-500">Email</span>
                   <p className="text-neutral-800 text-sm">
-                    dioaputra01@gmail.com
+                    dio50btl@gmail.com
                   </p>
                 </div>
               </a>
