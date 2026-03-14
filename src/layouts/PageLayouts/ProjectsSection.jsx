@@ -9,7 +9,7 @@ export default function ProjectsSection() {
       image: "/Toko.png",
       link: "https://toko-dahlan.vercel.app/",
       title: "Toko Kelontong Dahlan",
-      description: "E-commerce UMKM: Next.js + Tailwind + Firebase + Midtrans.",
+      description: "E-commerce UMKM (Toko Kelontong).",
     },
     {
       image: "/banksampah.png",

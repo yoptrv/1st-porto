@@ -99,22 +99,7 @@ module.exports = {
           "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
           "100%": { transform: "translate(0px, 0px) scale(1)" },
         },
-        orbit: {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
-        },
-        "orbit-reverse": {
-          "0%": { transform: "rotate(360deg)" },
-          "100%": { transform: "rotate(0deg)" },
-        },
-        "spin-slow": {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
-        },
-        "border-spin": {
-          "0%": { "--angle": "0deg" },
-          "100%": { "--angle": "360deg" },
-        },
+       
         morph: {
           "0%, 100%": { borderRadius: "60% 40% 30% 70%/60% 30% 70% 40%" },
           "25%": { borderRadius: "30% 60% 70% 40%/50% 60% 30% 60%" },

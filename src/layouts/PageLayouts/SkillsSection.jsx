@@ -67,7 +67,7 @@ const CERTIFICATES = [
     title: "Fundamentals of Data Science",
     issuer: "Dicoding Indonesia",
     year: 2026,
-    category: "Belajar Data Science",
+    category: "Data Science",
     tags: ["Data Science", "Python"],
     url: "/sertif/dasar-ds.pdf",
   },

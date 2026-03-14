@@ -73,7 +73,7 @@ export default function AboutMe() {
                     Focus
                   </div>
                   <div className="text-sm text-white/70 font-medium">
-                    Full-Stack Dev
+                    FE & Data Science
                   </div>
                 </div>
                 <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
@@ -97,7 +97,7 @@ export default function AboutMe() {
                     Stack
                   </div>
                   <div className="text-sm text-white/70 font-medium">
-                    Next.js & React
+                    React & Python
                   </div>
                 </div>
               </div>
@@ -138,7 +138,7 @@ export default function AboutMe() {
                 {[
                   {
                     label: "Web Development",
-                    desc: "React, Next.js, Tailwind",
+                    desc: "React with Next.js",
                   },
                   {
                     label: "AI & Machine Learning",

@@ -40,8 +40,8 @@ export default function ContactSection() {
     {
       icon: MdEmail,
       label: "Email",
-      value: "dio50btl@gmail.com",
-      href: "mailto:dio50btl@gmail.com",
+      value: "dioaputra01@gmail.com",
+      href: "mailto:dioaputra01@gmail.com",
       color: "text-primary-400",
       bg: "bg-primary-500/10",
       border: "border-primary-500/20",
@@ -243,10 +243,10 @@ export default function ContactSection() {
                   ideas, or opportunities to be part of your vision.
                 </p>
                 <a
-                  href="mailto:dio50btl@gmail.com"
+                  href="mailto:dioaputra01@gmail.com"
                   className="inline-flex items-center gap-2 text-primary-300 text-sm font-medium hover:text-primary-200 transition-colors"
                 >
-                  dio50btl@gmail.com
+                  dioaputra01@gmail.com
                   <HiOutlineArrowRight className="w-4 h-4" />
                 </a>
               </div>
