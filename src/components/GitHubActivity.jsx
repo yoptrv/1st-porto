@@ -4,16 +4,24 @@ import { GitHubCalendar } from "react-github-calendar";
 
 export default function GitHubActivity() {
   return (
-    <div className="w-full flex flex-col items-center text-center py-10">
-      {/* WRAPPER BIAR RESPONSIVE */}
+    <div className="w-full">
       <div className="w-full max-w-full overflow-x-auto scrollbar-none">
-        <div className="inline-block whitespace-nowrap p-4 rounded-xl bg-black text-white backdrop-blur-lg border border-white/10 shadow-xl mx-auto">
+        <div className="inline-block whitespace-nowrap p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] mx-auto">
           <GitHubCalendar
             username="yoptrv"
-            blockSize={14}
-            blockMargin={4}
+            blockSize={12}
+            blockMargin={3}
             colorScheme="dark"
-            fontSize={14}
+            fontSize={12}
+            theme={{
+              dark: [
+                "rgba(255,255,255,0.04)",
+                "#312e81",
+                "#4338ca",
+                "#6366f1",
+                "#818cf8",
+              ],
+            }}
           />
         </div>
       </div>

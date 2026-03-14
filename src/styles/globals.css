@@ -1,19 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ------------------------------
-   BASE SETTINGS
---------------------------------*/
+/* ========================================
+   MODERN PORTFOLIO — DESIGN SYSTEM
+   ======================================== */
+
+/* --- Base Layer --- */
 @layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   html {
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    background-color: #09090b;
+    color: #fafafa;
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(99, 102, 241, 0.3) transparent;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.3);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.5);
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: #fff;
   }
 }
 
-/* Hilangkan spin di input number */
+/* --- Hide spin buttons --- */
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
@@ -23,61 +64,43 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-/* ------------------------------
-   GLOBAL MOTION / ANIMATIONS
---------------------------------*/
+/* ========================================
+   SECTION ANIMATIONS
+   ======================================== */
 
-/* Float Animation */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
-}
-.animate-float { animation: float 6s ease-in-out infinite; }
-
-/* Bounce Slow */
-@keyframes bounce-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-.animate-bounce-slow { animation: bounce-slow 5s ease-in-out infinite; }
-
-/* Bounce Slower */
-@keyframes bounce-slower {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-.animate-bounce-slower { animation: bounce-slower 7s ease-in-out infinite; }
-
-/* ------------------------------
-   SECTION REVEAL
---------------------------------*/
+/* Section Reveal */
 @keyframes sectionReveal {
-  0% { opacity: 0; transform: translateY(60px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-section-reveal {
-  animation: sectionReveal 1s ease-out forwards;
+  animation: sectionReveal 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
-/* Fade Utilities */
+/* Stagger Fade Utilities */
 .fade-up {
   opacity: 0;
   transform: translateY(40px);
-  transition: 0.8s ease-out;
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .fade-left {
   opacity: 0;
   transform: translateX(-40px);
-  transition: 0.8s ease-out;
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .fade-right {
   opacity: 0;
   transform: translateX(40px);
-  transition: 0.8s ease-out;
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .show {
@@ -85,49 +108,146 @@ input[type="number"] {
   transform: translate(0) !important;
 }
 
-/* ------------------------------
-   MARQUEE (SKILLS SECTION)
---------------------------------*/
+/* ========================================
+   MARQUEE SYSTEM
+   ======================================== */
 
-/* Animasi arah kiri */
 @keyframes marquee-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-/* Animasi arah kanan */
 @keyframes marquee-right {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
-/* Track berisi 2 row duplicate */
 .marquee-track {
   display: flex;
   width: max-content;
 }
 
-/* Row berisi 1 set icon */
 .marquee-row {
   display: flex;
   gap: 3.5rem;
 }
 
-/* Arah kiri */
 .marquee-left {
   animation: marquee-left 22s linear infinite;
 }
 
-/* Arah kanan */
 .marquee-right {
   animation: marquee-right 22s linear infinite;
 }
 
-/* Mencegah icon mengecil atau wrap */
 .marquee-item {
   flex-shrink: 0;
 }
 
+/* ========================================
+   GLASS MORPHISM SYSTEM
+   ======================================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   BUTTON STYLES
+   ======================================== */
+
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: 0.875rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-outline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: 0.875rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: #e0e7ff;
+  background: transparent;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-outline:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+}
+
+/* Download Button */
 .download-btn {
   position: relative;
   overflow: hidden;
@@ -142,7 +262,7 @@ input[type="number"] {
   height: 200%;
   background: linear-gradient(
     120deg,
-    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.15),
     rgba(255, 255, 255, 0)
   );
   transform: rotate(25deg);
@@ -154,6 +274,264 @@ input[type="number"] {
   left: -10%;
 }
 
+/* ========================================
+   NAV LINK STYLES
+   ======================================== */
+
+.nav-link {
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-link.nav-active {
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav-link.nav-active::before {
+  opacity: 1;
+  transform: scale(1);
+  background: rgba(99, 102, 241, 0.2);
+}
+
+/* ========================================
+   GRADIENT TEXT UTILITY
+   ======================================== */
+
+.text-gradient {
+  background: linear-gradient(135deg, #c7d2fe, #a5b4fc, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-hero {
+  background: linear-gradient(135deg, #fff 0%, #c7d2fe 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   SECTION TITLE STYLES
+   ======================================== */
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.section-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.section-description {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* ========================================
+   CARD SYSTEM
+   ======================================== */
+
+.project-card {
+  position: relative;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.project-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(9, 9, 11, 0.95) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ========================================
+   SPOTLIGHT / HOVER EFFECTS
+   ======================================== */
+
+.spotlight-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-hover::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.15),
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  transform: translate(-50%, -50%);
+}
+
+.spotlight-hover:hover::after {
+  opacity: 1;
+}
+
+/* ========================================
+   NOISE TEXTURE OVERLAY
+   ======================================== */
+
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: 1000;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ========================================
+   DIVIDER LINE
+   ======================================== */
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 102, 241, 0.2),
+    transparent
+  );
+  margin: 2rem 0;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 5s ease-in-out infinite;
+}
+
+@keyframes bounce-slower {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+.animate-bounce-slower {
+  animation: bounce-slower 7s ease-in-out infinite;
+}
+
+/* Typing cursor */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.typing-cursor::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+  color: #818cf8;
+  font-weight: 300;
+}
+
+/* Shine effect */
 .shine {
   position: absolute;
   top: 0;
@@ -163,7 +541,7 @@ input[type="number"] {
   background: linear-gradient(
     to right,
     transparent,
-    rgba(255,255,255,0.7),
+    rgba(255, 255, 255, 0.15),
     transparent
   );
   transform: skewX(25deg);
@@ -174,47 +552,41 @@ input[type="number"] {
   left: 120%;
 }
 
-.nav-link {
-  position: relative;
-  padding: 6px 10px;
-  border-radius: 9999px;
-  overflow: hidden;
-  color: #ffffff; /* text-slate-900 */
-  font-weight: 500;
-  transition: color 0.3s ease, transform 0.2s ease;
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+
+@media (max-width: 768px) {
+  .section-title {
+    letter-spacing: -0.01em;
+  }
 }
 
-.nav-link:hover {
-  transform: translateY(-1px);
+/* ========================================
+   GLOW DOT
+   ======================================== */
+.glow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #818cf8;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
+  animation: pulse-dot 2s ease-in-out infinite;
 }
 
-/* Blob cair di belakang teks */
-.nav-link::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background: rgba(209, 209, 209, 0.95); /* ⬅️ BUKAN gradient lagi */
-  opacity: 0;
-  transform: scale(0.4);
-  filter: blur(10px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-  z-index: -1;
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.8);
+  }
 }
 
-/* Hover: blob muncul kayak air geser */
-.nav-link:hover::before {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-/* Active state: blob selalu nyala */
-.nav-link.nav-active::before {
-  opacity: 1;
-  transform: scale(1.15);
-}
-
-/* Active text styling */
-.nav-link.nav-active {
-  color: #720000;
-  font-weight: 600;
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer-gradient {
+  background: linear-gradient(180deg, #09090b 0%, #0f0f11 100%);
 }

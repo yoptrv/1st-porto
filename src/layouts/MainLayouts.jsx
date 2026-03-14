@@ -1,24 +1,25 @@
+"use client";
+
 import GlassNavbar from "@/components/GlassNavbar";
 import HeroSection from "./PageLayouts/HeroSection";
 import SkillsSection from "./PageLayouts/SkillsSection";
 import ProjectsSection from "./PageLayouts/ProjectsSection";
 import ContactSection from "./PageLayouts/ContactSection";
-import useScrollAnimation from "@/hooks/useScrollAnimation";
-import { useEffect, useState } from "react";
-import TextPressure from "@/components/TextPressure/TextPressure";
-// import Dither from "@/background/Dither/Dither";
 import AboutMe from "./PageLayouts/AboutMe";
+import useScrollAnimation from "@/hooks/useScrollAnimation";
+import { useEffect } from "react";
 import { FaReact, FaNodeJs, FaPython } from "react-icons/fa";
 import {
   SiNextdotjs,
   SiTailwindcss,
-  SiTypescript,
   SiJavascript,
   SiFirebase,
   SiTensorflow,
   SiPostgresql,
   SiFigma,
   SiCanva,
+  SiTypescript,
+  SiMysql,
 } from "react-icons/si";
 import LogoLoop from "@/components/LogoLoop/LogoLoop";
 import LightRays from "@/background/LightRays/LightRays";
@@ -37,142 +38,110 @@ export default function MainLayout() {
     }, 50);
   }, []);
 
-  // === LOGO LOOP DATA ===
+  // Tech logos for the marquee
   const techLogos = [
-    { node: <FaReact size={80} color="#61DAFB" /> },
-    { node: <SiNextdotjs size={80} color="#919191ff" /> },
-    { node: <SiTailwindcss size={80} color="#38BDF8" /> },
-    // { node: <SiTypescript size={80} color="#3178C6" /> },
-    { node: <SiJavascript size={80} color="#F7DF1E" /> },
-    { node: <FaNodeJs size={80} color="#3C873A" /> },
-    { node: <SiFirebase size={80} color="#F5820D" /> },
-    { node: <FaPython size={80} color="#3776AB" /> },
-    { node: <SiTensorflow size={80} color="#FF6F00" /> },
-    { node: <SiPostgresql size={80} color="#336791" /> },
-    { node: <SiFigma size={80} color="#cf750eff" /> },
-    { node: <SiCanva size={80} color="#0eb9cfff" /> },
+    { node: <FaReact size={50} color="#61DAFB" /> },
+    { node: <SiNextdotjs size={50} color="#a0a0a0" /> },
+    { node: <SiTailwindcss size={50} color="#38BDF8" /> },
+    { node: <SiJavascript size={50} color="#F7DF1E" /> },
+    { node: <FaNodeJs size={50} color="#3C873A" /> },
+    { node: <SiFirebase size={50} color="#F5820D" /> },
+    { node: <FaPython size={50} color="#3776AB" /> },
+    { node: <SiTensorflow size={50} color="#FF6F00" /> },
+    { node: <SiTypescript size={50} color="#0ea2cf" /> },
+    { node: <SiMysql size={50} color="#d5e72e" /> },
+    { node: <SiFigma size={50} color="#cf750e" /> },
+    { node: <SiCanva size={50} color="#0eb9cf" /> },
   ];
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden">
-      {/* DITHER BACKGROUND */}
-
-      <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none bg-black">
+    <div className="relative w-full min-h-screen overflow-hidden noise-overlay">
+      {/* Background Light Rays */}
+      <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none bg-surface-950">
         <LightRays
           raysOrigin="top-center"
-          raysColor="#f1f1f1ff"
-          raysSpeed={1.5}
-          lightSpread={0.8}
-          rayLength={1}
+          raysColor="#818cf8"
+          raysSpeed={1.2}
+          lightSpread={0.6}
+          rayLength={0.8}
           followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.02}
+          mouseInfluence={0.08}
+          noiseAmount={0.08}
+          distortion={0.015}
           className="custom-rays"
         />
       </div>
 
-      {/* LEFT + RIGHT GLOW */}
-      <div className="pointer-events-none fixed top-[-200px] left-[-200px] w-[500px] h-[500px] bg-blue-400/20 blur-[200px] rounded-full z-0" />
-      <div className="pointer-events-none fixed bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-purple-500/20 blur-[220px] rounded-full z-0" />
+      {/* Ambient Glow Effects */}
+      <div className="pointer-events-none fixed top-[-300px] left-[-200px] w-[600px] h-[600px] bg-primary-500/8 blur-[250px] rounded-full z-0" />
+      <div className="pointer-events-none fixed bottom-[-300px] right-[-200px] w-[600px] h-[600px] bg-purple-500/8 blur-[250px] rounded-full z-0" />
+      <div className="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-600/5 blur-[300px] rounded-full z-0" />
 
+      {/* Navigation */}
       <GlassNavbar />
-      <div className="relative z-10 space-y-12">
-        {/* HERO */}
-        <SectionWrapper id="profile">
-          <HeroSection />
-        </SectionWrapper>
 
+      {/* Main Content */}
+      <main className="relative z-10">
+        {/* Hero Section */}
+        <HeroSection />
+
+        {/* Divider with Logo Loop */}
+        <div className="relative py-8 md:py-12">
+          <div className="section-divider mb-8" />
+          <div className="max-w-7xl mx-auto px-4 md:px-8">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/[0.06]" />
+              <span className="text-[10px] text-white/20 uppercase tracking-[0.3em] font-medium">
+                Tech Stack
+              </span>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/[0.06]" />
+            </div>
+          </div>
+          <LogoLoop
+            logos={techLogos}
+            speed={100}
+            direction="left"
+            logoHeight={60}
+            gap={50}
+            hoverSpeed={0}
+            scaleOnHover
+            fadeOut
+            fadeOutColor="none"
+            ariaLabel="Technology logos"
+          />
+        </div>
+
+        {/* About Me Section */}
         <SectionWrapper id="about">
           <AboutMe />
         </SectionWrapper>
 
-        {/* SKILLS */}
-        <SectionWrapper id="skills" title="education">
+        {/* Skills / Education Section */}
+        <SectionWrapper id="skills">
           <SkillsSection />
-
-          {/* =====================
-                🚀 LOGO LOOP DI SINI
-              ===================== */}
-          <div className="mt-16 text-white">
-            <LogoLoop
-              logos={techLogos}
-              speed={120}
-              direction="left"
-              logoHeight={90}
-              gap={40}
-              hoverSpeed={0}
-              scaleOnHover
-              fadeOut
-              fadeOutColor="none"
-              ariaLabel="Technology logos"
-            />
-          </div>
         </SectionWrapper>
 
-        {/* PROJECTS */}
-        <SectionWrapper id="projects" title="Projects">
+        {/* Projects Section */}
+        <SectionWrapper id="projects">
           <ProjectsSection />
         </SectionWrapper>
 
-        {/* CONTACT */}
-        <SectionWrapper id="contact" title="Contact">
+        {/* Contact Section */}
+        <SectionWrapper id="contact">
           <ContactSection />
         </SectionWrapper>
-      </div>
+      </main>
     </div>
   );
 }
 
-function SectionWrapper({ id, title, children }) {
-  const isContact = id === "contact";
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () =>
-      setIsMobile(typeof window !== "undefined" && window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+function SectionWrapper({ id, children }) {
   return (
     <section
       id={id}
-      className={`
-        ${!isContact ? "opacity-0 animate-section-reveal translate-y-10" : ""}
-        w-full pt-0 pb-4 md:pt-4 md:pb-8
-        ${isContact ? "bg-white text-slate-900" : ""}
-      `}
+      className="opacity-0 animate-section-reveal translate-y-10 w-full"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        {title && (
-          <div
-            className={`
-              relative w-full mb-6 overflow-visible
-              ${!isContact ? "fade-up" : ""}
-              ${isMobile ? "min-h-[60px]" : "min-h-[140px]"}
-            `}
-          >
-            <TextPressure
-              text={title}
-              flex={false}
-              width={false}
-              weight={true}
-              italic={false}
-              alpha={false}
-              stroke={false}
-              scale={!isMobile}
-              minFontSize={isMobile ? 22 : 120}
-              textColor={isContact ? "#0f172a" : "#cacacaff"}
-            />
-          </div>
-        )}
-
-        <div className={`${!isContact ? "fade-up" : ""} overflow-visible`}>
-          {children}
-        </div>
-      </div>
+      <div className="fade-up overflow-visible">{children}</div>
     </section>
   );
 }
