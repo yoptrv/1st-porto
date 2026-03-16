@@ -5,10 +5,10 @@ export default function Profile() {
   return (
     <>
       <Head>
-        <title>Dio Adeliya Putra — Software Engineer & AI Enthusiast</title>
+        <title>Dio Adeliya Putra — Information Technology Student</title>
         <meta
           name="description"
-          content="Portfolio of Dio Adeliya Putra — Software Engineer, AI Enthusiast, and Computer Science Student. Building modern web applications with Next.js, React, and cutting-edge technologies."
+          content="Portfolio of Dio Adeliya Putra — Software Engineer, Data Science, AI Enthusiast, and Computer Science Student. "
         />
         <meta name="author" content="Dio Adeliya Putra" />
         <meta property="og:title" content="Dio Adeliya Putra — Portfolio" />
