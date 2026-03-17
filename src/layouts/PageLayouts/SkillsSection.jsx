@@ -100,7 +100,17 @@ const CERTIFICATES = [
     category: "Database",
     tags: ["SQL", "Database"],
     url: "/sertif/sql-inter.pdf",
-  }
+  },
+  {
+    id: 10,
+    image: "/sertif/fund-ml.png",
+    title: "Fundamentals of Machine Learning",
+    issuer: "Dicoding Indonesia",
+    year: 2026,
+    category: "AI",
+    tags: ["AI", "Machine Learning"],
+    url: "/sertif/fund-ml.pdf",
+  },
 ];
 
 const INITIAL_VISIBLE = 6;

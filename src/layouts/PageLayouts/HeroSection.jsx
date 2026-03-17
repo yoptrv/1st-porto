@@ -175,7 +175,7 @@ export default function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
               <a
-                href="/CV_2026.pdf"
+                href="/CV-Dio.pdf"
                 download="Dio-Adeliya-Putra-CV.pdf"
                 className="btn-primary"
               >
